@@ -39,7 +39,7 @@ const StyledButton = styled.a`
   padding: 0.25rem 1.5rem;
   border-radius: 2rem;
   text-decoration: none;
-
+  font-size: 1.3rem;
   cursor: pointer;
   &:hover {
     background-color: ${({ variant }) =>
@@ -48,9 +48,9 @@ const StyledButton = styled.a`
   }
 `;
 
-function Button({ variant, href = "#", children }) {
+function Button({ variant, style, children, href = "#" }) {
   return (
-    <StyledButton href={href} variant={variant}>
+    <StyledButton style={style} href={href} variant={variant}>
       {children}
     </StyledButton>
   );

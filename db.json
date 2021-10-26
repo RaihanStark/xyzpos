@@ -1,0 +1,34 @@
+{
+  "pricing": [
+    {
+      "name": "Basic",
+      "price": "45.000",
+      "bestSeller": false,
+      "benefit": [
+        "Kelola stok produk dengan mudah",
+        "Laporan penjualan",
+        "Jual produk digital"
+      ]
+    },
+    {
+      "name": "Premium",
+      "price": "50.000",
+      "bestSeller": true,
+      "benefit": [
+        "Semua fitur pada paket Basic",
+        "Dukungan printer struk",
+        "Live support 24 jam"
+      ]
+    },
+    {
+      "name": "Super POS!",
+      "price": "70.000",
+      "bestSeller": false,
+      "benefit": [
+        "Semua fitur pada paket Premium",
+        "Laporan penjualan lengkap",
+        "Jual produk digital"
+      ]
+    }
+  ]
+}

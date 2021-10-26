@@ -1,1 +1,2 @@
-export { toggleSidebar, changeHeaderTheme } from "./app/appActions";
+export { toggleSidebar, changeHeaderTheme, setPricing } from "./app/appActions";
+export { addPricing } from "./pricing/pricingActions";

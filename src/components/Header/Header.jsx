@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Logo from "../Logo/Logo";
 import Container from "../Container/Container";
-import Menu from "../Menu/Menu";
+import Menu from "../../containers/Menu/Menu";
 import theme from "../../theme";
 
 const HeaderContainer = styled.div`

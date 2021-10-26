@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import theme from "../../theme";
-import Button from "../Button/Button";
+import Button from "../../components/Button/Button";
 import Hamburger from "../Hamburger/Hamburger";
 
 const StyledMenu = styled.ul`
@@ -15,6 +15,7 @@ const StyledMenu = styled.ul`
   font-weight: 600;
   align-items: center;
   cursor: pointer;
+  font-size: 1.25rem;
   li a {
     color: inherit;
     text-decoration: none;
@@ -52,7 +53,8 @@ const StyledMenu = styled.ul`
   }
 `;
 function Menu({ variant }) {
-  const sidebarOpened = useSelector((state) => state.sidebarOpened);
+  const sidebarOpened = useSelector((state) => state.app.sidebarOpened);
+  const pricingActive = useSelector((state) => state.app.pricingActive);
   return (
     <>
       <Hamburger variant={variant} />
@@ -61,7 +63,9 @@ function Menu({ variant }) {
           <a>Fitur</a>
         </li>
         <li>
-          <a>Berlangganan</a>
+          <a href="#pricing" class={pricingActive ? "active" : null}>
+            Berlangganan
+          </a>
         </li>
         <Button
           variant={variant === "light" ? "outlinePrimary" : "outlineLight"}

@@ -1,18 +1,26 @@
 import Header from "../../components/Header/Header";
 import Button from "../../components/Button/Button";
 import Container from "../../components/Container/Container";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import HeroSvg from "../../components/HeroSvg/HeroSvg";
 import theme from "../../theme";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { changeHeaderTheme } from "../../redux";
+import { changeHeaderTheme, setPricing } from "../../redux";
 import { useSelector } from "react-redux";
-
+import Pricing from "../../containers/Pricing/Pricing";
+import { useInViewEffect } from "react-hook-inview";
+import Modal from "../../components/Modal/Modal";
 const HeroText = styled.div`
   font-size: 1.75rem;
 
   margin-bottom: 3rem;
+
+  ${({ bold }) =>
+    bold &&
+    css`
+      font-weight: 700;
+    `}
 
   b {
     color: ${theme.primary};
@@ -26,7 +34,12 @@ const HeroText = styled.div`
 `;
 
 const HeroContainer = styled.div`
+  height: 100vh;
+  justify-content: space-around;
+  align-items: center;
+  /* justify-content: center; */
   display: flex;
+
   div.left,
   div.right {
     flex-grow: 1;
@@ -50,7 +63,7 @@ const HeroContainer = styled.div`
 
     div.left {
       a {
-        max-width: 12rem;
+        max-width: 19rem;
       }
     }
   }
@@ -85,9 +98,19 @@ const StyledSection = styled.section`
   justify-content: center;
 `;
 
+const PricingSection = styled(StyledSection)`
+  height: auto !important;
+  margin-bottom: 2rem;
+  @media (min-width: 992px) {
+    & {
+      height: auto !important;
+    }
+  }
+`;
+
 function Landing() {
   const dispatch = useDispatch();
-  const headerTheme = useSelector((state) => state.headerTheme);
+  const headerTheme = useSelector((state) => state.app.headerTheme);
   const handleScroll = (e) => {
     const scrollTop = e.srcElement.scrollingElement.scrollTop;
     if (scrollTop === 0) {
@@ -95,53 +118,51 @@ function Landing() {
     }
     return dispatch(changeHeaderTheme("primary"));
   };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   }, []);
+
+  const ref = useInViewEffect(
+    ([entry], observer) => {
+      dispatch(setPricing(entry.isIntersecting));
+    },
+    { threshold: 0.1 }
+  );
   return (
     <>
       <Header variant={headerTheme} />
 
       <Container>
-        <StyledSection id="home">
-          <HeroContainer>
-            <div className="left">
-              <HeroText>
-                Solusi terbaik untuk <br />
-                <b>mengelola usaha</b> <br />
-                kamu!
-              </HeroText>
-              <ButtonGroup>
-                <Button variant="primary">Daftar Sekarang</Button>
-                <Button variant="outlinePrimary" href="#pricing">
-                  Pelajari Dulu!
-                </Button>
-              </ButtonGroup>
-            </div>
-            <div className="right">
-              <HeroSvg />
-            </div>
-          </HeroContainer>
-        </StyledSection>
-
-        <StyledSection id="pricing">
-          <HeroContainer>
-            <div className="left">
-              <HeroText>
-                Solusi terbaik untuk <br />
-                <b>mengelola usaha</b> <br />
-                kamu!
-              </HeroText>
-              <ButtonGroup>
-                <Button variant="primary">Daftar Sekarang</Button>
-                <Button variant="outlinePrimary">Pelajari Dulu!</Button>
-              </ButtonGroup>
-            </div>
-            <div className="right">
-              <HeroSvg />
-            </div>
-          </HeroContainer>
-        </StyledSection>
+        <HeroContainer>
+          <div className="left">
+            <HeroText>
+              Solusi terbaik untuk <br />
+              <b>mengelola usaha</b> <br />
+              kamu!
+            </HeroText>
+            <ButtonGroup>
+              <Button variant="primary">Daftar Sekarang</Button>
+              <Button variant="outlinePrimary" href="#pricing">
+                Pelajari Dulu!
+              </Button>
+            </ButtonGroup>
+          </div>
+          <div className="right">
+            <HeroSvg />
+          </div>
+        </HeroContainer>
+        {/* <Modal /> */}
+        <PricingSection
+          ref={ref}
+          id="pricing"
+          style={{ flexDirection: "column" }}
+        >
+          <HeroText bold style={{ alignSelf: "start" }}>
+            Daftar sekarang dan nikmati fiturnya!
+          </HeroText>
+          <Pricing />
+        </PricingSection>
       </Container>
       <StyledFooter>
         © <b>PT XYZ Indonesia</b> 2020
