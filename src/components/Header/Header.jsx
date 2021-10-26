@@ -7,6 +7,12 @@ import theme from "../../theme";
 const HeaderContainer = styled.div`
   background-color: ${({ variant }) =>
     variant && variant === "primary" ? theme.primary : "white"};
+  box-shadow: ${({ variant }) =>
+    variant && variant === "primary" ? "0px 10px 20px 0px #0000003d" : "none"};
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: all 300ms ease-in-out;
 `;
 
 const StyledHeader = styled.div`

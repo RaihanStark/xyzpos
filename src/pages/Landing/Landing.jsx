@@ -4,6 +4,10 @@ import Container from "../../components/Container/Container";
 import styled from "styled-components";
 import HeroSvg from "../../components/HeroSvg/HeroSvg";
 import theme from "../../theme";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { changeHeaderTheme } from "../../redux";
+import { useSelector } from "react-redux";
 
 const HeroText = styled.div`
   font-size: 1.75rem;
@@ -23,8 +27,6 @@ const HeroText = styled.div`
 
 const HeroContainer = styled.div`
   display: flex;
-
-  margin-top: 1.4rem;
   div.left,
   div.right {
     flex-grow: 1;
@@ -39,10 +41,6 @@ const HeroContainer = styled.div`
   }
 
   @media (min-width: 768px) {
-    & {
-      margin-top: 3.4rem;
-    }
-
     div.right {
       display: flex;
       svg {
@@ -73,28 +71,81 @@ const ButtonGroup = styled.div`
   gap: 1rem;
 `;
 
+const StyledFooter = styled.div`
+  background-color: ${theme.primary};
+  color: white;
+  text-align: center;
+  padding: 1.5rem 0;
+`;
+
+const StyledSection = styled.section`
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 function Landing() {
+  const dispatch = useDispatch();
+  const headerTheme = useSelector((state) => state.headerTheme);
+  const handleScroll = (e) => {
+    const scrollTop = e.srcElement.scrollingElement.scrollTop;
+    if (scrollTop === 0) {
+      return dispatch(changeHeaderTheme("light"));
+    }
+    return dispatch(changeHeaderTheme("primary"));
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, []);
   return (
     <>
-      <Header variant="light" />
+      <Header variant={headerTheme} />
+
       <Container>
-        <HeroContainer>
-          <div className="left">
-            <HeroText>
-              Solusi terbaik untuk <br />
-              <b>mengelola usaha</b> <br />
-              kamu!
-            </HeroText>
-            <ButtonGroup>
-              <Button variant="primary">Daftar Sekarang</Button>
-              <Button variant="outlinePrimary">Pelajari Dulu!</Button>
-            </ButtonGroup>
-          </div>
-          <div className="right">
-            <HeroSvg />
-          </div>
-        </HeroContainer>
+        <StyledSection id="home">
+          <HeroContainer>
+            <div className="left">
+              <HeroText>
+                Solusi terbaik untuk <br />
+                <b>mengelola usaha</b> <br />
+                kamu!
+              </HeroText>
+              <ButtonGroup>
+                <Button variant="primary">Daftar Sekarang</Button>
+                <Button variant="outlinePrimary" href="#pricing">
+                  Pelajari Dulu!
+                </Button>
+              </ButtonGroup>
+            </div>
+            <div className="right">
+              <HeroSvg />
+            </div>
+          </HeroContainer>
+        </StyledSection>
+
+        <StyledSection id="pricing">
+          <HeroContainer>
+            <div className="left">
+              <HeroText>
+                Solusi terbaik untuk <br />
+                <b>mengelola usaha</b> <br />
+                kamu!
+              </HeroText>
+              <ButtonGroup>
+                <Button variant="primary">Daftar Sekarang</Button>
+                <Button variant="outlinePrimary">Pelajari Dulu!</Button>
+              </ButtonGroup>
+            </div>
+            <div className="right">
+              <HeroSvg />
+            </div>
+          </HeroContainer>
+        </StyledSection>
       </Container>
+      <StyledFooter>
+        © <b>PT XYZ Indonesia</b> 2020
+      </StyledFooter>
     </>
   );
 }

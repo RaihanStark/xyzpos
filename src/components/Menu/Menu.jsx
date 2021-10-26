@@ -43,6 +43,11 @@ const StyledMenu = styled.ul`
       flex-direction: column;
       align-content: center;
       padding: 2rem 0;
+
+      box-shadow: ${({ variant }) =>
+        variant && variant === "primary"
+          ? "0px 10px 20px 0px #0000003d"
+          : "none"};
     }
   }
 `;

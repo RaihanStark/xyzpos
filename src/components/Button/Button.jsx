@@ -38,6 +38,7 @@ const StyledButton = styled.a`
     variant && variantOptions[variant].backgroundColor};
   padding: 0.25rem 1.5rem;
   border-radius: 2rem;
+  text-decoration: none;
 
   cursor: pointer;
   &:hover {
@@ -47,8 +48,12 @@ const StyledButton = styled.a`
   }
 `;
 
-function Button({ variant, children }) {
-  return <StyledButton variant={variant}>{children}</StyledButton>;
+function Button({ variant, href = "#", children }) {
+  return (
+    <StyledButton href={href} variant={variant}>
+      {children}
+    </StyledButton>
+  );
 }
 
 export default Button;

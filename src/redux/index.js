@@ -1,1 +1,1 @@
-export { toggleSidebar } from "./app/appActions";
+export { toggleSidebar, changeHeaderTheme } from "./app/appActions";
