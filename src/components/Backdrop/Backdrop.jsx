@@ -10,9 +10,11 @@ const StyledBackdrop = styled.div`
   z-index: 100;
   background-color: #0000003b;
   backdrop-filter: blur(7px);
+
+  cursor: pointer;
 `;
-function Backdrop() {
-  return <StyledBackdrop></StyledBackdrop>;
+function Backdrop({ onClick }) {
+  return <StyledBackdrop onClick={onClick}></StyledBackdrop>;
 }
 
 export default Backdrop;

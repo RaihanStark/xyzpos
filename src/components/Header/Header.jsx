@@ -20,13 +20,13 @@ const StyledHeader = styled.div`
   padding: 1.25rem 0;
 `;
 
-function Header({ variant }) {
+function Header({ variant, openModal }) {
   return (
     <HeaderContainer variant={variant}>
       <Container>
         <StyledHeader>
           <Logo variant={variant} />
-          <Menu variant={variant} />
+          <Menu variant={variant} openModal={openModal} />
         </StyledHeader>
       </Container>
     </HeaderContainer>

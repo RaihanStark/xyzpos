@@ -52,7 +52,7 @@ const StyledMenu = styled.ul`
     }
   }
 `;
-function Menu({ variant }) {
+function Menu({ variant, openModal }) {
   const sidebarOpened = useSelector((state) => state.app.sidebarOpened);
   const pricingActive = useSelector((state) => state.app.pricingActive);
   return (
@@ -60,15 +60,16 @@ function Menu({ variant }) {
       <Hamburger variant={variant} />
       <StyledMenu variant={variant} open={sidebarOpened}>
         <li>
-          <a>Fitur</a>
+          <a href="#fitur">Fitur</a>
         </li>
         <li>
-          <a href="#pricing" class={pricingActive ? "active" : null}>
+          <a href="#pricing" className={pricingActive ? "active" : null}>
             Berlangganan
           </a>
         </li>
         <Button
           variant={variant === "light" ? "outlinePrimary" : "outlineLight"}
+          onClick={() => openModal("login")}
         >
           Masuk
         </Button>

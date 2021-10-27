@@ -18,13 +18,14 @@ const PricingContainer = styled.div`
   }
 `;
 
-function Pricing() {
+function Pricing({ openModal }) {
   const dispatch = useDispatch();
   const pricingData = useSelector((state) => state.pricing.pricing);
   useEffect(() => {
     axios.get("http://localhost:3001/pricing").then((res) => {
       dispatch(addPricing(res.data));
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -39,6 +40,7 @@ function Pricing() {
                 value={price.price}
                 benefits={price.benefit}
                 bestSeller={price.bestSeller}
+                openModal={openModal}
               ></Price>
             );
           })}

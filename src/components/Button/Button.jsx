@@ -48,9 +48,15 @@ const StyledButton = styled.a`
   }
 `;
 
-function Button({ variant, style, children, href = "#" }) {
+function Button({ variant, style, children, href = "#", onClick, as }) {
   return (
-    <StyledButton style={style} href={href} variant={variant}>
+    <StyledButton
+      as={as}
+      onClick={onClick}
+      style={style}
+      href={href}
+      variant={variant}
+    >
       {children}
     </StyledButton>
   );

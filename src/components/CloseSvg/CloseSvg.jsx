@@ -1,9 +1,9 @@
-function CloseSvg() {
+function CloseSvg({ size }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="48.532"
-      height="48.532"
+      width={size}
+      height={size}
       viewBox="0 0 48.532 48.532"
     >
       <path d="M0,0H48.532V48.532H0Z" fill="none" />

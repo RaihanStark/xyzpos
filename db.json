@@ -30,5 +30,83 @@
         "Jual produk digital"
       ]
     }
-  ]
+  ],
+  "registered_account": [
+    {
+      "id": "cb8b",
+      "name": "Raihan Yudo Saputra",
+      "email": "raihanstark53@gmail.com",
+      "token": "asdf123",
+      "password": "raihan123"
+    },
+    {
+      "id": "24f6",
+      "name": "rararararara rarara",
+      "email": "raihanstark53@gmail.com",
+      "token": "asdf123",
+      "password": "123456789"
+    }
+  ],
+  "report": {
+    "summary": [
+      {
+        "name": "Masa Berlaku Langganan",
+        "value": "15 Juli 2020"
+      },
+      {
+        "name": "Total Produk",
+        "value": "500"
+      },
+      {
+        "name": "Produk Terjual",
+        "value": "1.000"
+      },
+      {
+        "name": "Masa Berlaku Langganan",
+        "value": "Rp 15.000.000"
+      }
+    ],
+    "sales": [
+      {
+        "time": "09.21",
+        "customer": "Budi Cahyadi",
+        "item": "Kipas Angin",
+        "price": "Rp 100.000",
+        "quantity": 1,
+        "total": "Rp 100.000"
+      },
+      {
+        "time": "09.22",
+        "customer": "Budi Santoso",
+        "item": "Sapu Ijuk",
+        "price": "Rp 10.000",
+        "quantity": 2,
+        "total": "Rp 20.000"
+      },
+      {
+        "time": "10.21",
+        "customer": "Santoso Cahyadi",
+        "item": "Rinso",
+        "price": "Rp 35.000",
+        "quantity": 4,
+        "total": "Rp 140.000"
+      },
+      {
+        "time": "09.21",
+        "customer": "Budi Budi",
+        "item": "Molto",
+        "price": "Rp 35.000",
+        "quantity": 4,
+        "total": "Rp 140.000"
+      },
+      {
+        "time": "09.21",
+        "customer": "Cahyadi",
+        "item": "Telur",
+        "price": "Rp 75.000",
+        "quantity": 1,
+        "total": "Rp 75.000"
+      }
+    ]
+  }
 }

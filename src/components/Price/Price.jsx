@@ -86,7 +86,7 @@ const BestSeller = styled.div`
   margin-bottom: -1rem;
 `;
 
-function Price({ bestSeller, name, value, benefits }) {
+function Price({ bestSeller, name, value, benefits, openModal }) {
   return (
     <StyledPrice>
       {bestSeller ? <BestSeller>Best Seller!</BestSeller> : null}
@@ -110,6 +110,7 @@ function Price({ bestSeller, name, value, benefits }) {
         <Button
           variant="primary"
           style={{ textAlign: "center", width: "13rem", fontSize: "1rem" }}
+          onClick={() => openModal("register")}
         >
           Aku mau
         </Button>
