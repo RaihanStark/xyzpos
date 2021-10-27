@@ -31,22 +31,7 @@
       ]
     }
   ],
-  "registered_account": [
-    {
-      "id": "cb8b",
-      "name": "Raihan Yudo Saputra",
-      "email": "raihanstark53@gmail.com",
-      "token": "asdf123",
-      "password": "raihan123"
-    },
-    {
-      "id": "24f6",
-      "name": "rararararara rarara",
-      "email": "raihanstark53@gmail.com",
-      "token": "asdf123",
-      "password": "123456789"
-    }
-  ],
+  "registered_account": [],
   "report": {
     "summary": [
       {
